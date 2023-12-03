@@ -53,8 +53,11 @@ double stripClosest(Punto* strip, int j, double d) {
 double closestPairDivide(Punto* points, int n) {
     qsort(points, n, sizeof(Punto), compareX);
 
-    if (n <= 2) {
+    if (n < 2) {
         return DBL_MAX;
+    }
+    if (n == 2) {
+        return distance(points[0], points[1]);
     }
 
     int mid = n / 2;
