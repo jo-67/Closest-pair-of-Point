@@ -27,9 +27,9 @@ for i in exe:
             a = line.split(" ")
             r = a[0]
             t = a[2]
-            if r=="Divide":
+            if r=="Divide_and_Conquer":
                 divide = divide + [[n, float(t)]]
-            elif r=="Sweep":
+            elif r=="Sweep_line":
                 divide = divide + [[n, float(t)]] 
             else:
                 sweep = sweep + [[n, float(t)]]

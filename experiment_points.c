@@ -57,6 +57,8 @@ int experiment_u(int n) {
         random = random + (fin3 -inicio3);
 
         free(randomArray);
+        free(randomArray2);
+        free(randomArray3);
     }
 
     double tiempo_divide = (double)(divide/reps) / CLOCKS_PER_SEC;
