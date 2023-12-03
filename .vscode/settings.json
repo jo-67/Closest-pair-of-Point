@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "vector": "c",
+        "*.tcc": "c",
+        "algorithm": "c",
+        "iterator": "c",
+        "memory": "c",
+        "random": "c",
+        "functional": "c",
+        "ranges": "c",
+        "regex": "c"
+    }
+}
