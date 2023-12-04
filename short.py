@@ -18,21 +18,25 @@ divide = []
 sweep = []
 aleatorio = []
 for i in exe:
-    mod = i.replace(" tom├│ ", " ")
-    mod = mod.replace(" segundos", "")
+    mod = i.replace(" tomó ", " ")
+    mod = mod.replace(" milisegundos", "")
     ke = mod.split("\n")
-    n = ke[0]
+    n = ke[0].replace("n=", "")
     for line in ke[1:]:
         if line != "" and line!="End":
             a = line.split(" ")
             r = a[0]
             t = a[2]
+            try:
+                t = float(t)
+            except:
+                t = 0
             if r=="Divide_and_Conquer":
-                divide = divide + [[n, float(t)]]
+                divide = divide + [[n, t]]
             elif r=="Sweep_line":
-                divide = divide + [[n, float(t)]] 
+                sweep = sweep + [[n, t]] 
             else:
-                sweep = sweep + [[n, float(t)]]
+                aleatorio = aleatorio + [[n, t]]
 
 #print(l)
 dfd = pd.DataFrame(divide)

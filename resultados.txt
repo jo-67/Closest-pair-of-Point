@@ -1,0 +1,93 @@
+Ejecutando para n=50000 
+Divide_and_Conquer tomó 0.151000 segundos en ejecutarse.
+Sweep_line tomó 0.004000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+Ejecutando para n=100000
+Divide_and_Conquer tomó 2.151000 segundos en ejecutarse.
+Sweep_line tomó 0.009000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+Ejecutando para n=150000
+Divide_and_Conquer tomó 3.719000 segundos en ejecutarse.
+Sweep_line tomó 0.016000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+Ejecutando para n=200000
+Divide_and_Conquer tomó 1.153000 segundos en ejecutarse.
+Sweep_line tomó 0.024000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+Ejecutando para n=250000
+Divide_and_Conquer tomó 1.153000 segundos en ejecutarse.
+Sweep_line tomó 0.033000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+Ejecutando para n=300000
+Divide_and_Conquer tomó 1.195000 segundos en ejecutarse.
+Sweep_line tomó 0.037000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+Ejecutando para n=350000
+Divide_and_Conquer tomó 1.692000 segundos en ejecutarse.
+Sweep_line tomó 0.049000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+Ejecutando para n=400000
+Divide_and_Conquer tomó 2.307000 segundos en ejecutarse.
+Sweep_line tomó 0.051000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+Ejecutando para n=450000
+Divide_and_Conquer tomó 2.318000 segundos en ejecutarse.
+Sweep_line tomó 0.067000 segundos en ejecutarse.
+Aleatorizado tomó 0.000000 segundos en ejecutarse.
+End
+End
+PS C:\Users\pepad\OneDrive\Escritorio\Uni\10mo\logaritmos\tarea3>  & 'c:\Users\pepad\.vscode\extensions\ms-vscode.cpptools-1.18.5-win32-x64\debugAdapters\bin\WindowsDebugLauncher.exe' '--stdin=Microsoft-MIEngine-In-e5ozgb3v.cwi' '--stdout=Microsoft-MIEngine-Out-4gazx4wd.qrz' '--stderr=Microsoft-MIEngine-Error-5jmr0yug.gpt' '--pid=Microsoft-MIEngine-Pid-5lbcsahs.wb1' '--dbgExe=C:\Users\pepad\OneDrive\Documents\mingw\mingw64\bin\gdb.exe' '--interpreter=mi'
+Ejecutando para n=50000
+Divide_and_Conquer tomó 153.000000 milisegundos en ejecutarse.
+Sweep_line tomó 5.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+Ejecutando para n=100000
+Divide_and_Conquer tomó 1996.000000 milisegundos en ejecutarse.
+Sweep_line tomó 9.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+Ejecutando para n=150000
+Divide_and_Conquer tomó 3811.000000 milisegundos en ejecutarse.
+Sweep_line tomó 14.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+Ejecutando para n=200000 
+Divide_and_Conquer tomó 1053.000000 milisegundos en ejecutarse.
+Sweep_line tomó 20.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+Ejecutando para n=250000 
+Divide_and_Conquer tomó 1061.000000 milisegundos en ejecutarse.
+Sweep_line tomó 28.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+Ejecutando para n=300000
+Divide_and_Conquer tomó 1087.000000 milisegundos en ejecutarse.
+Sweep_line tomó 35.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+Ejecutando para n=350000
+Divide_and_Conquer tomó 1551.000000 milisegundos en ejecutarse.
+Sweep_line tomó 43.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+Ejecutando para n=400000
+Divide_and_Conquer tomó 2101.000000 milisegundos en ejecutarse.
+Sweep_line tomó 49.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+Ejecutando para n=450000
+Divide_and_Conquer tomó 2111.000000 milisegundos en ejecutarse.
+Sweep_line tomó 62.000000 milisegundos en ejecutarse.
+Aleatorizado tomó 0.000000 milisegundos en ejecutarse.
+End
+End

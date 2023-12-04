@@ -61,17 +61,17 @@ int experiment_u(int n) {
         free(randomArray3);
     }
 
-    double tiempo_divide = (double)(divide/reps) / CLOCKS_PER_SEC;
+    double tiempo_divide = (double)(divide/reps) *1000/ CLOCKS_PER_SEC;
     //double tiempo_radix = (double)(fin - inicio);
-    printf("Divide_and_Conquer tomó %f segundos en ejecutarse.\n", tiempo_divide);
+    printf("Divide_and_Conquer tomó %f milisegundos en ejecutarse.\n", tiempo_divide);
 
-    double tiempo_sweep = (double)(sweep/reps) / CLOCKS_PER_SEC;
+    double tiempo_sweep = (double)(sweep/reps) *1000/ CLOCKS_PER_SEC;
 
-    printf("Sweep_line tomó %f segundos en ejecutarse.\n", tiempo_sweep);
+    printf("Sweep_line tomó %f milisegundos en ejecutarse.\n", tiempo_sweep);
 
-    double tiempo_random = (double)(random/reps) / CLOCKS_PER_SEC;
+    double tiempo_random = (double)(random/reps) *1000/ CLOCKS_PER_SEC;
 
-    printf("Aleatorizado tomó %f segundos en ejecutarse.\n", tiempo_random);
+    printf("Aleatorizado tomó %f milisegundos en ejecutarse.\n", tiempo_random);
 
     printf("End\n");
 
