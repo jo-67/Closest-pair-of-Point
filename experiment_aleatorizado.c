@@ -30,7 +30,7 @@ int experiment_u(int n) {
     clock_t rapida = 0;
     clock_t primos = 0;
     for (int i=0 ; i<reps ; i++) {
-        printf("rep: %d", reps);
+        //printf("rep: %d\n", reps);
         Punto* randomArray = createRandomArray(n);
         Punto* randomArray2 = (Punto*)malloc(n * sizeof(Punto));
         Punto* randomArray3 = (Punto*)malloc(n * sizeof(Punto));
@@ -38,7 +38,7 @@ int experiment_u(int n) {
         memcpy(randomArray3, randomArray, n * sizeof(Punto));
 
         clock_t inicio = clock();
-        // Divide and conquer
+        // universal
         double universal_d = closestPairAleatorizadoUniversal(randomArray, n);
         //printf("divide %f\n", divide_d);
         clock_t fin = clock();
@@ -46,6 +46,7 @@ int experiment_u(int n) {
 
         clock_t inicio2 = clock();
         // rapida
+        double rapida_d = closestPairAleatorizadoRapido(randomArray, n);
         clock_t fin2 = clock();
         rapida = rapida + (fin2 -inicio2);
 

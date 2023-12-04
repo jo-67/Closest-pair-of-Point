@@ -21,7 +21,6 @@ typedef struct Node {
 
 // numero random entero entre 0 y n
 int randomNumber(int n) {
-    srand((unsigned)time(NULL));
     int numeroAleatorio = rand();
     numeroAleatorio = numeroAleatorio % (n + 1);
     return numeroAleatorio;
@@ -59,10 +58,15 @@ void freeGrid(Node*** grid, int n) {
 int hashUniversal(int x, int a, int b, int p, int m) {
     return ((int)a * x + b) % p % m;
 }
+int hashRapido(int x, int a, int b, int k, int l) {
+    int result = (a * x + b) & ((1 << k) - 1);
+    return result >> l;
+}
 
 double closestPairAleatorizadoUniversal(Punto* points, int n) {
     double d = DBL_MAX;
     // se seleccionan n pares y se calcula el menor d
+    srand((unsigned)time(NULL));
     for (int i = 0; i < n; i++) {
         int j = randomNumber(n);
         int k = randomNumber(n);
@@ -74,12 +78,18 @@ double closestPairAleatorizadoUniversal(Punto* points, int n) {
             d = dis;
         }
     }
-    Node*** grid = createGrid(d);
+    //printf("random d = %f\n", d);
+    int l = (int) log2(n);
+    int m = 1 << (l + 1);
+    Node*** grid = createGrid(m);
     int d_grid = d;
-    // poner los puntos en la grilla dxd
+    // poner los puntos en la grilla dxd}
+    int a = randomNumber(n);
+    int b = randomNumber(n);
+    int p = 50000017; // maximo primo representable
     for (int i = 0; i < n; i++) {
-        int x = hashUniversal(points[i].x, 3, 5, 7, d);
-        int y = hashUniversal(points[i].y, 3, 5, 7, d);
+        int x = hashUniversal(points[i].x, a, b, p, m);
+        int y = hashUniversal(points[i].y, a, b, p, m);
         
         Node* nodo = (Node*)malloc(sizeof(Node));
         nodo->p = points[i];
@@ -96,8 +106,8 @@ double closestPairAleatorizadoUniversal(Punto* points, int n) {
     }
     // Revisar casilla y vecinos
     for (int i = 0; i < n; i++) {
-        int x = hashUniversal(points[i].x, 3, 5, 7, d);
-        int y = hashUniversal(points[i].y, 3, 5, 7, d);
+        int x = hashUniversal(points[i].x, a, b, p, m);
+        int y = hashUniversal(points[i].y, a, b, p, m);
         for (int j = x-1; j <= x+1; j++) {
             for (int k = y-1; k <= y+1; k++) {
                 if (j >= 0 && j < d && k >= 0 && k < d) {
@@ -114,7 +124,72 @@ double closestPairAleatorizadoUniversal(Punto* points, int n) {
         }
     }
 
-    freeGrid(grid, d_grid);
+    freeGrid(grid, m);
+    return d;
+
+}
+double closestPairAleatorizadoRapido(Punto* points, int n) {
+    double d = DBL_MAX;
+    // se seleccionan n pares y se calcula el menor d
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < n; i++) {
+        int j = randomNumber(n);
+        int k = randomNumber(n);
+        while(k==j) { // elimina pares iguales
+            k = randomNumber(n);
+        }
+        double dis = distance(points[j], points[k]);
+        if (dis < d) {
+            d = dis;
+        }
+    }
+    //printf("random d = %f\n", d);
+    int l = (int) log2(n);
+    int m = 1 << (l + 1);
+    Node*** grid = createGrid(m);
+    int d_grid = d;
+    // poner los puntos en la grilla dxd}
+    int a = randomNumber(n);
+    int b = randomNumber(n);
+    int p = 50000017; // maximo primo representable
+    for (int i = 0; i < n; i++) {
+        int x = hashUniversal(points[i].x, a, b, l+1, l);
+        int y = hashUniversal(points[i].y, a, b, l+1, l);
+        
+        Node* nodo = (Node*)malloc(sizeof(Node));
+        nodo->p = points[i];
+        nodo->siguiente = NULL;
+        if (grid[x][y] == NULL) {
+            grid[x][y] = nodo;
+        } else {
+            Node* aux = grid[x][y];
+            while(aux->siguiente != NULL) {
+                aux = aux->siguiente;
+            }
+            aux->siguiente = nodo;
+        }
+    }
+    // Revisar casilla y vecinos
+    for (int i = 0; i < n; i++) {
+        int x = hashUniversal(points[i].x, a, b, l+1, l);
+        int y = hashUniversal(points[i].y, a, b, l+1, l);
+        for (int j = x-1; j <= x+1; j++) {
+            for (int k = y-1; k <= y+1; k++) {
+                if (j >= 0 && j < d && k >= 0 && k < d) {
+                    Node* aux = grid[j][k];
+                    while(aux != NULL) {
+                        double dis = distance(points[i], aux->p);
+                        if (dis < d) {
+                            d = dis;
+                        }
+                        aux = aux->siguiente;
+                    }
+                }
+            }
+        }
+    }
+
+    freeGrid(grid, m);
     return d;
 
 }
