@@ -21,7 +21,7 @@ typedef struct Node {
 
 // numero random entero entre 0 y n
 int randomNumber(int n) {
-    srand(time(NULL));
+    srand((unsigned)time(NULL));
     int numeroAleatorio = rand();
     numeroAleatorio = numeroAleatorio % (n + 1);
     return numeroAleatorio;
