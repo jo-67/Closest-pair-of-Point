@@ -40,6 +40,7 @@ int experiment_u(int n) {
         clock_t inicio = clock();
         // universal
         double universal_d = closestPairAleatorizadoUniversal(randomArray, n);
+        free(randomArray);
         //printf("divide %f\n", divide_d);
         clock_t fin = clock();
         universal = universal + (fin -inicio);
@@ -47,6 +48,7 @@ int experiment_u(int n) {
         clock_t inicio2 = clock();
         // rapida
         double rapida_d = closestPairAleatorizadoRapido(randomArray2, n);
+        free(randomArray2);
         clock_t fin2 = clock();
         rapida = rapida + (fin2 -inicio2);
 
@@ -54,12 +56,10 @@ int experiment_u(int n) {
         clock_t inicio3 = clock();
         // Primos 
         double primos_d =closestPairAleatorizadoPrimos(randomArray3, n);
+        free(randomArray3);
         clock_t fin3 = clock();
         primos = primos + (fin3 -inicio3);
 
-        free(randomArray);
-        free(randomArray2);
-        free(randomArray3);
     }
 
     double tiempo_divide = (double)(universal/reps) / CLOCKS_PER_SEC;
