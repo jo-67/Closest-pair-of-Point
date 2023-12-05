@@ -39,13 +39,15 @@ int experiment_u(int n) {
         clock_t inicio = clock();
         // Divide and conquer
         double divide_d = closestPairDivide(randomArray, n);
+        free(randomArray);
         //printf("divide %f\n", divide_d);
         clock_t fin = clock();
         divide = divide + (fin -inicio);
 
         clock_t inicio2 = clock();
         // sweep
-        double sweep_d =closestPairSweep(randomArray, n);
+        double sweep_d =closestPairSweep(randomArray2, n);
+        free(randomArray2);
         //printf("sweep %f\n", sweep_d);
         clock_t fin2 = clock();
         sweep = sweep + (fin2 -inicio2);
@@ -53,25 +55,24 @@ int experiment_u(int n) {
         
         clock_t inicio3 = clock();
         // random
+        double primos_d =closestPairAleatorizadoPrimos(randomArray3, n);
+        free(randomArray3);
         clock_t fin3 = clock();
         random = random + (fin3 -inicio3);
 
-        free(randomArray);
-        free(randomArray2);
-        free(randomArray3);
     }
 
     double tiempo_divide = (double)(divide/reps) / CLOCKS_PER_SEC;
     //double tiempo_radix = (double)(fin - inicio);
-    printf("Divide_and_Conquer tomó %f segundos en ejecutarse.\n", tiempo_divide);
+    printf("Divide_and_Conquer tomó %f milisegundos en ejecutarse.\n", tiempo_divide);
 
     double tiempo_sweep = (double)(sweep/reps) / CLOCKS_PER_SEC;
 
-    printf("Sweep_line tomó %f segundos en ejecutarse.\n", tiempo_sweep);
+    printf("Sweep_line tomó %f milisegundos en ejecutarse.\n", tiempo_sweep);
 
     double tiempo_random = (double)(random/reps) / CLOCKS_PER_SEC;
 
-    printf("Aleatorizado tomó %f segundos en ejecutarse.\n", tiempo_random);
+    printf("Aleatorizado tomó %f milisegundos en ejecutarse.\n", tiempo_random);
 
     printf("End\n");
 
@@ -81,9 +82,9 @@ int experiment_u(int n) {
 
 int main() {
     //createRandomArray(100000000, u);
-    for (int i = 5; i < 50; i+=5) {
+    for (int i = 5; i < 50; i+=2.5) {
         //experiment_u(i*1000000);
-        experiment_u(i*10000);
+        experiment_u(i*100);
     }
     printf("End");
     return 0;

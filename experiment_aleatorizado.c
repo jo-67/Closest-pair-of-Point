@@ -4,7 +4,7 @@
 #include <time.h>
 #include <math.h>
 #include <string.h>
-#include "source.c"
+#include "aleatorizado.c"
 
 // Función para crear un arreglo aleatorio de tamaño n con números en el rango [0,1)
 // Los elementos del arreglo son puntos Punto(x,y)
@@ -26,10 +26,11 @@ int experiment_u(int n) {
     srand((unsigned)time(NULL));
 
     int reps = 10;
-    clock_t divide = 0;
-    clock_t sweep = 0;
-    clock_t random = 0;
+    clock_t universal = 0;
+    clock_t rapida = 0;
+    clock_t primos = 0;
     for (int i=0 ; i<reps ; i++) {
+        //printf("rep: %d\n", reps);
         Punto* randomArray = createRandomArray(n);
         Punto* randomArray2 = (Punto*)malloc(n * sizeof(Punto));
         Punto* randomArray3 = (Punto*)malloc(n * sizeof(Punto));
@@ -37,41 +38,41 @@ int experiment_u(int n) {
         memcpy(randomArray3, randomArray, n * sizeof(Punto));
 
         clock_t inicio = clock();
-        // Divide and conquer
-        double divide_d = closestPairDivide(randomArray, n);
+        // universal
+        double universal_d = closestPairAleatorizadoUniversal(randomArray, n);
+        free(randomArray);
         //printf("divide %f\n", divide_d);
         clock_t fin = clock();
-        divide = divide + (fin -inicio);
+        universal = universal + (fin -inicio);
 
         clock_t inicio2 = clock();
-        // sweep
-        double sweep_d =closestPairSweep(randomArray, n);
-        //printf("sweep %f\n", sweep_d);
+        // rapida
+        double rapida_d = closestPairAleatorizadoRapido(randomArray2, n);
+        free(randomArray2);
         clock_t fin2 = clock();
-        sweep = sweep + (fin2 -inicio2);
+        rapida = rapida + (fin2 -inicio2);
 
         
         clock_t inicio3 = clock();
-        // random
-        clock_t fin3 = clock();
-        random = random + (fin3 -inicio3);
-
-        free(randomArray);
-        free(randomArray2);
+        // Primos 
+        double primos_d =closestPairAleatorizadoPrimos(randomArray3, n);
         free(randomArray3);
+        clock_t fin3 = clock();
+        primos = primos + (fin3 -inicio3);
+
     }
 
-    double tiempo_divide = (double)(divide/reps) / CLOCKS_PER_SEC;
+    double tiempo_divide = (double)(universal/reps) / CLOCKS_PER_SEC;
     //double tiempo_radix = (double)(fin - inicio);
-    printf("Divide_and_Conquer tomó %f segundos en ejecutarse.\n", tiempo_divide);
+    printf("Hashing_universal tomó %f segundos en ejecutarse.\n", tiempo_divide);
 
-    double tiempo_sweep = (double)(sweep/reps) / CLOCKS_PER_SEC;
+    double tiempo_sweep = (double)(rapida/reps) / CLOCKS_PER_SEC;
 
-    printf("Sweep_line tomó %f segundos en ejecutarse.\n", tiempo_sweep);
+    printf("Rapida tomó %f segundos en ejecutarse.\n", tiempo_sweep);
 
-    double tiempo_random = (double)(random/reps) / CLOCKS_PER_SEC;
+    double tiempo_random = (double)(primos/reps) / CLOCKS_PER_SEC;
 
-    printf("Aleatorizado tomó %f segundos en ejecutarse.\n", tiempo_random);
+    printf("Primos tomó %f segundos en ejecutarse.\n", tiempo_random);
 
     printf("End\n");
 
@@ -83,7 +84,7 @@ int main() {
     //createRandomArray(100000000, u);
     for (int i = 5; i < 50; i+=5) {
         //experiment_u(i*1000000);
-        experiment_u(i*10000);
+        experiment_u(i*100);
     }
     printf("End");
     return 0;

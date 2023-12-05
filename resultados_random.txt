@@ -1,0 +1,20 @@
+Ejecutando para n=500 
+Hashing_universal tom├│ 0.006000 segundos en ejecutarse.
+Rapida tom├│ 0.019000 segundos en ejecutarse.
+Primos tom├│ 0.018000 segundos en ejecutarse.
+End
+Ejecutando para n=700
+Hashing_universal tom├│ 2.294000 segundos en ejecutarse.
+Rapida tom├│ 0.227000 segundos en ejecutarse.
+Primos tom├│ 0.281000 segundos en ejecutarse.
+End
+Ejecutando para n=900
+Hashing_universal tom├│ 0.184000 segundos en ejecutarse.
+Rapida tom├│ 0.018000 segundos en ejecutarse.
+Primos tom├│ 0.018000 segundos en ejecutarse.
+End
+Ejecutando para n=1100
+Hashing_universal tom├│ 1.626000 segundos en ejecutarse.
+Rapida tom├│ 0.031000 segundos en ejecutarse.
+Primos tom├│ 0.029000 segundos en ejecutarse.
+End
