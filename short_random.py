@@ -5,7 +5,7 @@ import re
 resultados = {}
 
 # Leer los resultados desde el archivo (puedes ajustar el nombre del archivo)
-with open('resultados.txt', 'r') as archivo:
+with open('resultados_random.txt', 'r') as archivo:
     # Utiliza read() para leer todo el contenido como una sola cadena
     resultados_texto = archivo.read()
 
@@ -14,11 +14,11 @@ exe = resultados_texto.split("Ejecutando para ")
 #RadixSort tom├│ 6.07 segundos en ejecutarse.
 #QuickSort tom├│ 5.29 segundos en ejecutarse.
 #End
-divide = []
-sweep = []
-aleatorio = []
+universal = []
+rapido = []
+primos = []
 for i in exe:
-    mod = i.replace(" tomó ", " ")
+    mod = i.replace(" tom├│ ", " ")
     mod = mod.replace(" milisegundos", "")
     ke = mod.split("\n")
     n = ke[0].replace("n=", "")
@@ -31,18 +31,18 @@ for i in exe:
                 t = float(t)
             except:
                 t = 0
-            if r=="Divide_and_Conquer":
-                divide = divide + [[n, t]]
-            elif r=="Sweep_line":
-                sweep = sweep + [[n, t]] 
+            if r=="Hashing_universal":
+                universal = universal + [[n, t]]
+            elif r=="Rapida":
+                rapido = rapido + [[n, t]] 
             else:
-                aleatorio = aleatorio + [[n, t]]
+                primos = primos + [[n, t]]
 
 #print(l)
-dfd = pd.DataFrame(divide)
-dfs = pd.DataFrame(sweep)
-dfa = pd.DataFrame(aleatorio)
+dfd = pd.DataFrame(universal)
+dfs = pd.DataFrame(rapido)
+dfa = pd.DataFrame(primos)
 
-dfd.to_excel('resultadosDivide.xlsx', index=False)
-dfs.to_excel('resultadosSweep.xlsx', index=False)
-dfa.to_excel('resultadosAleatorio.xlsx', index=False)
+dfd.to_excel('resultadosUniversal.xlsx', index=False)
+dfs.to_excel('resultadosRapido.xlsx', index=False)
+dfa.to_excel('resultadosPrimos.xlsx', index=False)
