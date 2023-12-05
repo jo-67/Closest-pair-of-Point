@@ -46,13 +46,14 @@ int experiment_u(int n) {
 
         clock_t inicio2 = clock();
         // rapida
-        double rapida_d = closestPairAleatorizadoRapido(randomArray, n);
+        double rapida_d = closestPairAleatorizadoRapido(randomArray2, n);
         clock_t fin2 = clock();
         rapida = rapida + (fin2 -inicio2);
 
         
         clock_t inicio3 = clock();
-        // random
+        // Primos 
+        double primos_d =closestPairAleatorizadoPrimos(randomArray3, n);
         clock_t fin3 = clock();
         primos = primos + (fin3 -inicio3);
 
